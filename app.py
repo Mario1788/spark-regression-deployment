@@ -38,8 +38,8 @@ broadcast_scaler = sc.broadcast(scaler_model)
 def home():
     return render_template('home.html')
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
+@app.route('/spark_predict_api',methods=['POST'])
+def spark_predict_api():
     data=request.json['data']
     print(data)
     print(np.array(list(data.values())).reshape(1,-1))
@@ -50,8 +50,8 @@ def predict_api():
     print(output[0])
     return jsonify(output[0])
 
-@app.route('/predict',methods=['POST'])
-def predict():
+@app.route('/spark_predict',methods=['POST'])
+def spark_predict():
     data=[float(x) for x in request.form.values()]
     #Scaling
     final_input=broadcast_scaler.value.transform(np.array(data).reshape(1,-1))
