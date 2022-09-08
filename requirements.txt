@@ -1,0 +1,7 @@
+pyspark
+Flask
+flask
+sklearn
+pandas
+numpy
+gunicorn
